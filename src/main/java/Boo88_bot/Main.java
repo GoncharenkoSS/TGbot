@@ -15,10 +15,16 @@ public class Main {
         botsApi.registerBot(bot);
 
     }
-    public static void getUserList(){
+
+    public static void getUserList(int n) {
         Controller controller = new Controller(bot);
-        for (String str : controller.getUsers(21)) {
+        for (String str : controller.getUsers(n)) {
             bot.sendText(userID, str);
         }
+    }
+
+    public static void getUserByID(int id) {
+        Controller controller = new Controller(bot);
+        bot.sendText(userID, controller.getUserID(id));
     }
 }

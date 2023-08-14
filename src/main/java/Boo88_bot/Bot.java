@@ -2,7 +2,9 @@ package Boo88_bot;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Bot extends TelegramLongPollingBot {
@@ -22,14 +24,28 @@ public class Bot extends TelegramLongPollingBot {
         var msg = update.getMessage();
         var user = msg.getFrom();
         Main.userID = user.getId();
-        if(msg.getText().equals("/get_users")){
-            Main.getUserList();
-        }
-
+        task1(msg);
+        task2(msg);
         System.out.println(user.getFirstName() + ":  " + msg.getText());
     }
 
-    public void sendText(Long who, String what){
+    void task1(Message msg) {
+        String[] parts = msg.getText().split(" ");
+        if (parts[0].equals("/get_users")) {
+            if (parts.length == 1) Main.getUserList(0);
+            else Main.getUserList(Integer.parseInt(parts[1]));
+        }
+    }
+
+    void task2(Message msg) {
+        String[] parts = msg.getText().split(" ");
+        if (parts[0].equals("/get_user")) {
+            if (parts.length == 1) Main.getUserByID(-1);
+            else Main.getUserByID(Integer.parseInt(parts[1]));
+        }
+    }
+
+    public void sendText(Long who, String what) {
         SendMessage sm = SendMessage.builder()
                 .chatId(who.toString()) //Who are we sending a message to
                 .text(what).build();    //Message content

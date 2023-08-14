@@ -1,4 +1,4 @@
-package Boo88_bot;
+package Boo88_bot.JsonData;
 
 import com.fasterxml.jackson.annotation.*;
 import javax.annotation.Generated;
@@ -14,7 +14,7 @@ import java.util.Map;
         "avatar"
 })
 @Generated("jsonschema2pojo")
-public class Data {
+public class Json1 {
 
     @JsonProperty("id")
     private Integer id;

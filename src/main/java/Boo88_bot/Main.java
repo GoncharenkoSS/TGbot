@@ -13,7 +13,6 @@ public class Main {
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
         bot = new Bot();
         botsApi.registerBot(bot);
-
     }
 
     public static void getUserList(int n) {
@@ -25,6 +24,12 @@ public class Main {
 
     public static void getUserByID(int id) {
         Controller controller = new Controller(bot);
-        bot.sendText(userID, controller.getUserID(id));
+        bot.sendText(userID, controller.getUser(id));
     }
+
+    public static void getCreateUser(String first_name, String last_name) {
+        Controller controller = new Controller(bot);
+        bot.sendText(userID, controller.createUser(first_name, last_name));
+    }
+
 }

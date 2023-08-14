@@ -26,6 +26,7 @@ public class Bot extends TelegramLongPollingBot {
         Main.userID = user.getId();
         task1(msg);
         task2(msg);
+        task3(msg);
         System.out.println(user.getFirstName() + ":  " + msg.getText());
     }
 
@@ -40,8 +41,15 @@ public class Bot extends TelegramLongPollingBot {
     void task2(Message msg) {
         String[] parts = msg.getText().split(" ");
         if (parts[0].equals("/get_user")) {
-            if (parts.length == 1) Main.getUserByID(-1);
+            if (parts.length == 1) Main.getUserByID(0);
             else Main.getUserByID(Integer.parseInt(parts[1]));
+        }
+    }
+
+    void task3(Message msg) {
+        String[] parts = msg.getText().split(" ");
+        if (parts[0].equals("/create_user")) {
+            if (parts.length>1) Main.getCreateUser(parts[1], parts[2]);
         }
     }
 

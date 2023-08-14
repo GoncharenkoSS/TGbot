@@ -1,9 +1,10 @@
-package Boo88_bot;
+package Boo88_bot.JsonData;
 
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "data"
 })
 @Generated("jsonschema2pojo")
-public class Json {
+public class Header1 {
 
     @JsonProperty("page")
     private Integer page;
@@ -31,7 +32,7 @@ public class Json {
     @JsonProperty("total_pages")
     private Integer totalPages;
     @JsonProperty("data")
-    private List<Data> data;
+    private List<Json1> data;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -76,12 +77,12 @@ public class Json {
     }
 
     @JsonProperty("data")
-    public List<Data> getData() {
+    public List<Json1> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(List<Data> data) {
+    public void setData(List<Json1> data) {
         this.data = data;
     }
 
